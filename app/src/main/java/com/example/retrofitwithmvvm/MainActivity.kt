@@ -1,5 +1,6 @@
 package com.example.retrofitwithmvvm
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitwithmvvm.data.UserData
 import com.example.retrofitwithmvvm.databinding.ActivityMainBinding
 import com.example.retrofitwithmvvm.databinding.UserViewBinding
+import com.example.retrofitwithmvvm.ui.activity.posts_activity.PostsActivity
+import com.example.retrofitwithmvvm.ui.activity.user_list_activity.UserListActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,22 +24,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        binding.userListHolder.apply {
-            itemBuilder = { parent, index ->
-                UserViewBinding.inflate(LayoutInflater.from(this@MainActivity), parent, false).root
-            }
-            itemBinding { holder, index ->
-                UserViewBinding.bind(holder.itemView).apply {
-                    userList[index]
-                }
-            }
-            layoutManager = LinearLayoutManager(this@MainActivity).apply {
-                orientation = RecyclerView.VERTICAL
-            }
+        binding.userListBtn.setOnClickListener {
+            startActivity(Intent(this, UserListActivity::class.java))
         }
-
-
+        binding.postListBtn.setOnClickListener {
+            startActivity(Intent(this, PostsActivity::class.java))
+        }
 
 
     }

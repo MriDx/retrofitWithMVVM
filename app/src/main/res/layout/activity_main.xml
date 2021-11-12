@@ -4,16 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
 
-    <com.mridx.premaderecyclerview.PremadeRecyclerView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/userListBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/userListHolder"
-        tools:listitem="@layout/user_view"
-        />
+        android:layout_height="wrap_content"
+        android:text="User List" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/postListBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post List" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
