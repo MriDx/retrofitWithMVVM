@@ -20,7 +20,8 @@ class UserListActivityViewModel @Inject constructor(
     val response: LiveData<Resource<List<UserData>>> get() = _response
 
     init {
-        getUserList()
+        //getUserList()
+        getUsers()
     }
 
     private fun getUserList() = viewModelScope.launch {
@@ -31,6 +32,12 @@ class UserListActivityViewModel @Inject constructor(
         } else {
             _response.postValue(Resource.error(userListResponse.errorBody().toString(), null))
         }
+    }
+
+    private fun getUsers() = viewModelScope.launch {
+        _response.postValue(Resource.loading(null))
+        val resource = userListRepository.getAndSaveUsers()
+        _response.postValue(resource)
     }
 
 
